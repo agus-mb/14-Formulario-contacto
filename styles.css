@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.formulario{
+    margin: auto;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.formulario-titulo{
+    text-align: center;
+    padding:20px;
+}
+
+.form-submit, .form-label, .form-input{
+    font-size: 25px;
+    width: 100%;
+}
+
+.form-input{
+    padding:10px;
+}
+
+.form-input {
+    padding: 10px;
+}
+
+.form-input-container {
+    position: relative;
+}
+
+.form-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Evita que el label sea clickeable */
+    transition: all 0.3s ease; /* Agregamos una transición suave para efectos visuales */
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    transform: translateY(60%) scale(0.95); /* Mueve el label arriba y escala para reducir su tamaño */
+    color: #555; /* Cambia el color del label cuando el input está enfocado o tiene contenido */
+}
+
+
