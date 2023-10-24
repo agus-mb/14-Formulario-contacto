@@ -29,8 +29,16 @@
     padding:10px;
 }
 
-.form-input:focus{
+/*.form-input:focus{
+    outline: 1px solid yellow;
+}*/
+
+.error{
     outline: 1px solid red;
+}
+
+.sucess{
+    outline: 1px solid green;
 }
 
 
