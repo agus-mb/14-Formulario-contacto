@@ -6,6 +6,8 @@ const telefonoInput= document.getElementById('telefono');
 const mensajeInput= document.getElementById('mensaje');
 const botonEnviar=document.getElementById('boton-submit')
 
+const formField=document.getElementsByClassName('form-input-container')
+const small= document.querySelector('small')
 
 for(var i=0; i < inputs.length; i++){
     inputs[i].addEventListener('keyup', function(){
@@ -44,14 +46,39 @@ const isPhoneValid= phone=>{
 //////////////////////////////////////////////////
 
 const error = (input,mensaje)=>{
-    const formFiled=inputs.parentElement;
-    formFiled.classList.remove('sucess');
-    formFiled.classList.add('error')
+
+    formField.classList.remove('success');
+    formField.classList.add('error');
+    small.textContent=mensaje;
 }
+
+const sucess=(input)=>{
+
+    formField.classList.remove('error');
+    formField.classList.add('success');
+    small.textContent='';
+}
+
+console.log(formField)
 
 const checkUsername=()=>{
     let valid=false;
 
     const min=3;
     const max=25;
+
+    const username=nombreInput.value.trim();
+    if(isEmpty(username)){
+
+        error(nombreInput, "djmncljen")
+
+    }else if (!isBetween(username.lenght,min,max)){
+
+        error(nombreInput,`ddsd ${min} y ${max}`)
+
+    }else{
+        sucess(nombreInput)
+        valid=true;
+    }
+    return valid;
 }
