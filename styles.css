@@ -33,11 +33,11 @@
     outline: 1px solid yellow;
 }*/
 
-.error{
+.error input{
     outline: 1px solid red;
 }
 
-.sucess{
+.sucess input{
     outline: 1px solid green;
 }
 
@@ -51,6 +51,7 @@
 
 .form-input-container {
     position: relative;
+
 }
 
 .form-label {
