@@ -6,9 +6,6 @@ const telefonoInput= document.getElementById('telefono');
 const mensajeInput= document.getElementById('mensaje');
 const botonEnviar=document.getElementById('boton-submit')
 
-const formField=document.getElementsByClassName('form-input-container')
-const small= document.querySelector('small')
-
 for(var i=0; i < inputs.length; i++){
     inputs[i].addEventListener('keyup', function(){
         if(this.value.length>=1){
@@ -28,7 +25,7 @@ const PHONE_REGEX=/^\d{3}-\d{3}-\d{4}$/;
 
 const isEmpty=value =>value===' '; //true si la cadena esta vacia, sirve para nombre.
 
-const isBetween= (lenght, min, max)=> lenght>min&&lenght<max;//si el largo esta entre max y min, sirve para nombre.
+const isBetween= (length, min, max)=> length>min&&length<max;//si el largo esta entre max y min, sirve para nombre.
 
 const isMailValid=email=>{
 return EMAIL_REGEX.test(email)
@@ -46,20 +43,21 @@ const isPhoneValid= phone=>{
 //////////////////////////////////////////////////
 
 const error = (input,mensaje)=>{
-
+    const formField = input.parentElement;
     formField.classList.remove('success');
     formField.classList.add('error');
-    small.textContent=mensaje;
+    const small = formField.querySelector('small');
+    small.textContent = mensaje;
 }
 
 const sucess=(input)=>{
-
+    const formField = input.parentElement;
     formField.classList.remove('error');
     formField.classList.add('success');
-    small.textContent='';
+    const small = formField.querySelector('small');
+    small.textContent = '';
 }
 
-console.log(formField)
 
 const checkUsername=()=>{
     let valid=false;
@@ -70,15 +68,20 @@ const checkUsername=()=>{
     const username=nombreInput.value.trim();
     if(isEmpty(username)){
 
-        error(nombreInput, "djmncljen")
+        error(nombreInput, "Este campo es obligatorio.")
 
-    }else if (!isBetween(username.lenght,min,max)){
+    }else if (!isBetween(username.length, min, max)){
 
-        error(nombreInput,`ddsd ${min} y ${max}`)
+        error(nombreInput,`Debe tener entre ${min} y ${max}`)
 
     }else{
         sucess(nombreInput)
         valid=true;
     }
     return valid;
+
+
+
+    
 }
+
