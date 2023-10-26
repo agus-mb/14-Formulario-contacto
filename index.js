@@ -20,7 +20,7 @@ for(var i=0; i < inputs.length; i++){
 
 
 const EMAIL_REGEX=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-const PASSWORD_REGEX= /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%])[A-Za-z\d@#$!%]{8,}$/;
+
 const PHONE_REGEX=/^\d{3}-\d{3}-\d{4}$/;
 
 const isEmpty=value =>value===' '; //true si la cadena esta vacia, sirve para nombre.
@@ -31,9 +31,6 @@ const isMailValid=email=>{
 return EMAIL_REGEX.test(email)
 }
 
-const isPasswordValid= password=>{
-   return PASSWORD_REGEX.test(password);
-}
 
 const isPhoneValid= phone=>{
     return PHONE_REGEX.test(phone);
@@ -79,9 +76,49 @@ const checkUsername=()=>{
         valid=true;
     }
     return valid;
-
-
-
-    
+  
 }
 
+const checkEmail=()=>{
+    let valid=false;
+    const email= correoInput.value.trim()
+
+    if(isEmpty(email)){
+        error(correoInput, 'El mail es obligatorio')
+
+    }else if(!isMailValid(email)){
+        error(correoInput,'El mail es invalido')
+    }else{
+        sucess(correoInput)
+        valid=true
+    }
+    return valid
+}
+
+const checkPhone=()=>{
+    let valid=false;
+    const phone= telefonoInput.value.trim()
+
+    if(isEmpty(phone)){
+        error(telefonoInput, 'El telefono es obligatorio')
+
+    }else if(!isPhoneValid(phone)){
+        error(telefonoInput,'El mail es invalido')
+    }else{
+        sucess(telefonoInput)
+        valid=true
+    }
+    return valid
+}
+
+form.addEventListener('submit',e=>{
+    e.preventDefault();
+
+    const isUsernameValid= checkUsername();
+    const isEmailValid= checkEmail();
+    const isPhoneValid= checkPhone();
+
+    const isFormValid=isUsernameValid && isEmailValid && isPhoneValid;
+
+    console.log(isFormValid,"valido")
+})
