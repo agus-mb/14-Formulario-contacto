@@ -21,9 +21,9 @@ for(var i=0; i < inputs.length; i++){
 
 const EMAIL_REGEX=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
-const PHONE_REGEX=/^\d{3}-\d{3}-\d{4}$/;
+const PHONE_REGEX=/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/;
 
-const isEmpty=value =>value===' '; //true si la cadena esta vacia, sirve para nombre.
+const isEmpty=value =>value===''; //true si la cadena esta vacia, sirve para nombre.
 
 const isBetween= (length, min, max)=> length>min&&length<max;//si el largo esta entre max y min, sirve para nombre.
 
@@ -120,5 +120,5 @@ form.addEventListener('submit',e=>{
 
     const isFormValid=isUsernameValid && isEmailValid && isPhoneValid;
 
-    console.log(isFormValid,"valido")
+
 })

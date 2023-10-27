@@ -34,11 +34,16 @@
 }
 
 .error{
-    outline: 1px solid red;
+    outline: 1px solid rgb(201, 0, 0);
 }
 
 .success{
  outline: 1px solid green;
+}
+
+small{
+    font-size: 20px;
+    color: rgb(201, 0, 0);
 }
 
 
